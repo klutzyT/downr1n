@@ -1,28 +1,28 @@
 # downr1n
 Downr1n enables tethered downgrades of checkm8 iOS devices to iOS 15, 14 and 13.
 
-In general, dual booting is a better option than downgrading if you have the necessary storage. if you activate the localboot path it would be ultra better believe me xd.
+In my opinion, using [dualra1n](https://github.com/dualra1n/dualra1n) is a better option than downgrading if you have the necessary storage (if you dont theres also a --downgrade option in dualra1n). if you activate the localboot path it would be so much better, believe me XD.
 
 # Usage
-1: Download the IPSW file and place it in the ipsw/ directory.
+1: Download an IPSW file with the version you want to downgrade to and place it in the ipsw/ directory.
 
-2: Execute the script without using 'sudo' on Linux. if it doesn't work please use sudo then.
+2: Execute the script (run it as root on Linux, dont run it as root on Mac OS).
 
 Example: ./downr1n.sh --downgrade 14.3
 
 The various command-line options are as follows:
 
-      --downgrade        : Downgrade your device to iOS 14 tethered.
+      --downgrade        : Downgrade your device to iOS 15-13.0 tethered.
 
-      --dfuhelper        : A helper tool to transition A11 devices from recovery mode to DFU mode.
+      --dfuhelper        : A helper tool to help anyone who is struggling to get into DFU mode manually.
 
-      --jailbreak        : Jailbreak with pogo. Usage: `./downr1n.sh --jailbreak 14.8`.
+      --jailbreak        : Jailbreak with dualra1n loader. Usage: `./downr1n.sh --jailbreak 14.8`.
 
       --taurine          : Jailbreak with taurine. Usage: `./downr1n.sh --jailbreak 14.3 --taurine`.
 
       --boot             : Boot the device.
 
-      --keyServer         use this option to downgrade when the keys server is in problem. only on MacOS. use ex: --downgrade 14.8 --keyServer 
+      --keyServer        : Use this option to downgrade when the key server is not working at that moment. this only works on Mac OS. use ex: --downgrade 14.8 --keyServer 
 
       --dont-restore     : Avoids using futurerestore, this can be used to only create boot files. Example: `--downgrade 14.3 --dont-restore`.
 
@@ -37,19 +37,19 @@ The various command-line options are as follows:
 - A disabled passcode on A10 and A11 devices.
 - unzip, python3, libimobiledevice-utils, libusbmuxd-tools, xz-utils.
 - An .iPSW file containing iOS 15, 14, 13.
-- A device running macOS or a Linux distro. It is recommended to use macOS, as it is likely more stable and faster.
+- A device running macOS or a Linux distro (Live CDs are supported just ensure you have enough storage). It is recommended to use macOS, as it is likely more stable and faster. (**Windows subsystem for Linux is NOT supported**) 
 
 # Issues Putting Device in PwnDFU Mode
 
-- A DFU mode exists where the device's screen is black. However, when downgrading the device, recovery mode also turns black. To put the device into PwnDFU mode, you need to put it into real DFU mode by pressing poweroff+(volume down or home button). Look for a tutorial on YouTube to understand how. Once in PwnDFU mode, execute ./binaries/$(uname)/gaster pwn to succeed. If the device is not in DFU mode, it will loop.
+- Theres is a DFU mode exists where the device's screen is black. However, when downgrading the device, it will exit and go back to recovery. To put the device into PwnDFU mode, you need to put it into real DFU mode by pressing poweroff+(volume down or home button). if you dont know how just use the --dfuhelper command. Once in PwnDFU mode, execute ./binaries/$(username)/gaster pwn to succeed. If the device is not in DFU mode, it will just loop.
 
 # importants things
 
-- downgrading ios 16 to 14 or another version, you will have to bypass the setup somehow. good luck on it.
+- downgrading from ios 16 to 14/13 or another version, you will have to bypass the setup somehow. **We will not provide a tutorial for this just look it up yourself**.
 
-- on ios 13 the touch id doesn't work so the home button on iphone 7 will not work sadly.
+- on ios 13 the touch id doesn't work so the home button on iphone 7/7 plus will not work unfortunately.
 
-- you can't downgrade to ios 14.2 lower on a11 devices
+- you can't downgrade to iOS 14.2 and lower on a11 (aka: iPhone 8/8 Plus and iPhone X) devices. Use 14.3+ on these devices
 
 # Warnings
 - I am **NOT** responsible for any data loss. The user of this program accepts responsibility should something happen to their device.
@@ -57,13 +57,13 @@ The various command-line options are as follows:
    - futurerestore --exit-recovery
    - irecovery -n
 
-# fix some problems
+# fixing some problems
 
-- please execute wikiproxy.py manually if it gives problem with server key. for ex: sudo python3 wikiproxy.py
+- please execute wikiproxy.py manually if it gives error with the server key. for ex: sudo python3 wikiproxy.py
 
-- if the error still after above fix, if this happend to you when you are downgrading with futurerestore again please add this arg --keyServer for example ./downr1n.sh --downgrade 14.5 --keyServer.
+- if the error still occurres even after running the command above, and if you are getting this error after running future restore add this arg to your command (--keyServer) for example ./downr1n.sh --downgrade 14.5 --keyServer.
 
-- remember if you will use the next command or will activate localboot it is better that you first downgrade and when you success you can use --jailbreak to jailbreak the device and it will ask you to activate localboot path. why do this because the localboot need to be executed after --jailbreak
+- remember if you use the next command or activate localboot it is better that you first downgrade and when you finish, then you can use --jailbreak to jailbreak the device and it will ask you to activate the localboot path.The reason why you should do this is because the localboot needs to be executed after --jailbreak
 
 # Need Help?
 - Join my discord server: [Dualra1nServer](https://discord.gg/Gjs2P7FBuk)
@@ -71,7 +71,7 @@ The various command-line options are as follows:
 # How to Jailbreak?
 - Jailbreak with dualra1n-loader: ./downr1n --jailbreak (YourVer = 14.3). Note: this does not actually jailbreak the device. When I say "jailbreak," I'm referring to the process of installing Sileo and bootstrapping the device. Dualra1n-loader only installs Sileo and bootstraps with the kernel patch.
 
-- Taurine: ./downr1n --jailbreak (YourVer = 14.3) --taurine. Note: this is not recommended.
+- Jailbreak with Taurine: ./downr1n --jailbreak (YourVer = 14.3) --taurine. Note: this is not recommended.
 
 # This project was created with love by Edwin :)
 
@@ -79,7 +79,9 @@ The various command-line options are as follows:
 
 - thanks to [uckermark](https://github.com/Uckermark/) for the amazing dualra1n-loader
 
-- thanks to [sasa](https://github.com/sasa8810) for the code of download futurerestore ;| 
+- thanks to [sasa](https://github.com/sasa8810) for the code of download futurerestore ;|
+
+- thanks to [KlutzyT](https://github.com/klutzyT) for improvements
 
 <details><summary>Other credits for tools and codes used in downr1n</summary>
 
